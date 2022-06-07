@@ -1,6 +1,5 @@
-import About from '../pages/About';
-
 const { render, screen } = require('@testing-library/react');
+import About from '../pages/About';
 
 describe('Teste o componente <About.js />.', () => {
   test('Teste se a página contém as informações sobre a Pokédex', () => {
@@ -15,13 +14,9 @@ describe('Teste o componente <About.js />.', () => {
   });
   test('Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
     render(<About />);
-    const tagP1 = 'This application simulates a Pokédex,'
-    + ' a digital encyclopedia containing all Pokémons';
-    const tagP2 = 'One can filter Pokémons by type,'
-    + ' and see more details for each one of them';
-    expect(screen.getByText(tagP1))
+    expect(screen.getByText(/This application simulates a Pokédex/i))
       .toBeInTheDocument();
-    expect(screen.getByText(tagP2))
+    expect(screen.getByText(/One can filter Pokémons by type/i))
       .toBeInTheDocument();
   });
   test('Teste se a página contém a seguinte imagem de uma Pokédex', () => {
