@@ -1,5 +1,5 @@
 import React from 'react';
-const { render, screen } = require('@testing-library/react');
+import { render, screen } from '@testing-library/react';
 import About from '../pages/About';
 
 describe('Teste o componente <About.js />.', () => {
