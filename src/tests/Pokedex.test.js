@@ -84,7 +84,9 @@ describe('Teste de a pokedex tem os botoes de filtro', () => {
 });
 
 describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
-  renderWithRouter(<App />);
-  expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
-  fireEvent.click(screen.getByRole('button', { name: /all/i }));
+  test('', () => {
+    renderWithRouter(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /all/i }));
+    expect(screen.getByText(/pikachu/i)).toBeInTheDocument();
+  });
 });
