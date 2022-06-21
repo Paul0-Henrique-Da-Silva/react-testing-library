@@ -60,14 +60,18 @@ describe('Teste se é mostrado apenas um Pokémon por vez', () => {
 describe('Teste de a pokedex tem os botoes de filtro', () => {
   test('filtragem para cada tipo de pokemon', () => {
     renderWithRouter(<App />);
-    screen.getByRole('button', { name: 'All' });
-    screen.getByRole('button', { name: 'Electric' });
-    screen.getByRole('button', { name: 'Fire' });
-    screen.getByRole('button', { name: 'Bug' });
-    screen.getByRole('button', { name: 'Poison' });
-    screen.getByRole('button', { name: 'Psychic' });
-    screen.getByRole('button', { name: 'Normal' });
-    screen.getByRole('button', { name: 'Dragon' });
+    const buttonFilter = screen.getAllByTestId('pokemon-type-button');
+    buttonFilter.forEach((button) => {
+      expect(button).toBeInTheDocument();
+    });
+    // screen.getByRole('button', { name: 'All' });
+    // screen.getByRole('button', { name: 'Electric' });
+    // screen.getByRole('button', { name: 'Fire' });
+    // screen.getByRole('button', { name: 'Bug' });
+    // screen.getByRole('button', { name: 'Poison' });
+    // screen.getByRole('button', { name: 'Psychic' });
+    // screen.getByRole('button', { name: 'Normal' });
+    // screen.getByRole('button', { name: 'Dragon' });
   });
   test('Pokedex deve circular somente por pokemons do msm tipo', () => {
     renderWithRouter(<App />);
@@ -86,7 +90,8 @@ describe('Teste de a pokedex tem os botoes de filtro', () => {
 describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
   test('', () => {
     renderWithRouter(<App />);
+    expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /all/i }));
-    expect(screen.getByText(/pikachu/i)).toBeInTheDocument();
+    expect(screen.getByTestId('pokemon-name')).toHaveTextContent('Pikachu');
   });
 });
