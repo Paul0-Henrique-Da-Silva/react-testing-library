@@ -38,7 +38,7 @@ test('URL exibida no navegador muda para /pokemon/<id>, onde <id> ', () => {
 
 test('Teste se existe um ícone de estrela nos pokémons favoritados:', () => {
   renderWithRouter(<App />);
-  //expect(screen.getByRole('link', { name: /more details/i })).toBeInTheDocument();
+  // expect(screen.getByRole('link', { name: /more details/i })).toBeInTheDocument();
   fireEvent.click(screen.getByRole('link', { name: /more details/i }));
   expect(screen.getByRole('checkbox')).toBeInTheDocument();
   fireEvent.click(screen.getByRole('checkbox'));
