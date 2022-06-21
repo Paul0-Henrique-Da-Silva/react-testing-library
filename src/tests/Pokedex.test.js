@@ -23,7 +23,7 @@ describe('Teste o componente `<Pokedex.js />', () => {
 describe('O botão deve conter o texto `Próximo pokémon`', () => {
   test('próx pokémons devem ser mostrados,clicar sucessivamente no botão;', () => {
     renderWithRouter(<App />);
-    expect(screen.getByText('Pikachu')).toBeInTheDocument()
+    expect(screen.getByText('Pikachu')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Próximo pokémon/i })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /Próximo pokémon/i }));
     expect(screen.getByText(/charmander/i)).toBeInTheDocument();
@@ -32,33 +32,33 @@ describe('O botão deve conter o texto `Próximo pokémon`', () => {
 describe('Teste se é mostrado apenas um Pokémon por vez', () => {
   test('', () => {
     renderWithRouter(<App />);
-    expect(screen.getAllByTestId('pokemon-name')).toHaveLength(1)
-});
+    expect(screen.getAllByTestId('pokemon-name')).toHaveLength(1);
+  });
 });
 describe('Teste de a pokedex tem os botoes de filtro', () => {
   test('filtragem para cada tipo de pokemon', () => {
     renderWithRouter(<App />);
-        expect(screen.getAllByTestId('pokemon-type-button')[0]).toBeInTheDocument();
-      });
+    expect(screen.getAllByTestId('pokemon-type-button')[0]).toBeInTheDocument();
   });
-  test('Pokedex deve circular somente por pokemons do msm tipo', () => {
-    renderWithRouter(<App />);
-    fireEvent.click(screen.getByRole('button', { name: /Psychic/i }));
-    expect(screen.getByText(/alakazam/i)).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: /próximo pokémon/i }));
-    expect(screen.getByText(/mew/i)).toBeInTheDocument();
-  });
+});
+test('Pokedex deve circular somente por pokemons do msm tipo', () => {
+  renderWithRouter(<App />);
+  fireEvent.click(screen.getByRole('button', { name: /Psychic/i }));
+  expect(screen.getByText(/alakazam/i)).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: /próximo pokémon/i }));
+  expect(screen.getByText(/mew/i)).toBeInTheDocument();
+});
 
-  test('O botão All precisa estar sempre visível', () => {
-    renderWithRouter(<App />);
-    expect(screen.getByRole('button', { name: 'All' })).toBeInTheDocument();
-  });
+test('O botão All precisa estar sempre visível', () => {
+  renderWithRouter(<App />);
+  expect(screen.getByRole('button', { name: 'All' })).toBeInTheDocument();
+});
 
 describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
   test('', () => {
     renderWithRouter(<App />);
-    expect(screen.getByRole('button', {name: /all/i})).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /all/i }));
-    expect(screen.getByTestId('pokemon-name')).toHaveTextContent('Pikachu')
-});
+    expect(screen.getByTestId('pokemon-name')).toHaveTextContent('Pikachu');
+  });
 });
